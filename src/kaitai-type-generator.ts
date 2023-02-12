@@ -15,12 +15,12 @@ export function toScreamingCase(kebabCase: string): string {
   return kebabCase.toUpperCase()
 }
 
-export async function generateTypes(this: KaitaiContext, yaml: any) {
+export async function generateTypes(this: KaitaiContext, yaml: any, target: string) {
   const targetFolder = dirname(
-    join(this.config.root, this.kaitaiOptions.generatedTypesFolder, relative(this.config.root, this.id)),
+    join(this.config.root, this.kaitaiOptions.generatedTypesFolder, relative(this.config.root, target)),
   )
   await mkdir(targetFolder, {recursive: true})
-  await writeFile(join(targetFolder, `${basename(this.id)}.d.ts`), generateTypeDefinition(yaml))
+  await writeFile(join(targetFolder, `${basename(target)}.d.ts`), generateTypeDefinition(yaml))
 }
 
 export function generateTypeDefinition(spec: KsySchema): string {

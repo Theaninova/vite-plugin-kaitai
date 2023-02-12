@@ -23,7 +23,7 @@ export function yamlImporter(context: KaitaiContext): YamlImporter {
     const file = await readFile(resolvedFile.id, "utf8")
     const yaml = parse(file)
 
-    await generateTypes.call(context, yaml)
+    await generateTypes.call(context, yaml, importPath)
 
     return yaml
   }
