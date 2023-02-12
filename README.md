@@ -1,6 +1,9 @@
 # vite-plugin-kaitai
 
-Allows you to directly import `.ksy` files
+![](https://img.shields.io/npm/v/vite-plugin-kaitai)
+
+Allows you to directly import [Kaitai Struct](https://kaitai.io/) (`.ksy`) files,
+including auto-generating some (somewhat rudimentary) type definitions.
 
 ## Installation
 

@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "Vite plugin for importing Kaitai Struct files directly",
   "main": "./lib/index.js",
+  "files": [
+    "lib/**/*.js",
+    "lib/**/*.d.ts",
+    "README.md"
+  ],
   "publishConfig": {
     "access": "public"
   },
