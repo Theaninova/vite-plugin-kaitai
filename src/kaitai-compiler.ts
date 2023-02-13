@@ -1,5 +1,7 @@
 import KaitaiStructCompiler from "kaitai-struct-compiler"
 import type {KaitaiContext} from "./context"
+import {toTitleCase} from "./kaitai-type-generator"
+import {basename} from "node:path"
 
 export async function compileKaitaiToJs(this: KaitaiContext): Promise<string | undefined> {
   const compiler = new KaitaiStructCompiler()
@@ -14,7 +16,7 @@ export async function compileKaitaiToJs(this: KaitaiContext): Promise<string | u
       const self = {KaitaiStream};
       ${Object.values(files).join("\n")}
 
-      const outputFunction = Object.entries(self).find(([name]) => name !== 'KaitaiStream')[1]
+      const outputFunction = self["${toTitleCase(yaml.meta.id)}"]
       return new outputFunction(new KaitaiStream(source))
     }
   `

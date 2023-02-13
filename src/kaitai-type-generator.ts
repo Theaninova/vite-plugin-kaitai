@@ -114,7 +114,7 @@ export function convertNativeType(type: string): string | undefined {
 }
 
 export function generateEnums(enumSpec: Record<string, EnumSpec>) {
-  return Object.entries(enumSpec)
+  return Object.entries(enumSpec || {})
     .map(
       ([name, spec]) =>
         `
