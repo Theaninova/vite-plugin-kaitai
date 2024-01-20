@@ -83,10 +83,10 @@ export function getAttributeType(attribute: Attribute) {
   const typeName = attribute.enum
     ? toTitleCase(attribute.enum)
     : typeof attribute.type === "string"
-    ? convertExternalType(attribute.type)
-    : typeof attribute.type === "object"
-    ? [...new Set(Object.values(attribute.type.cases).map(it => convertExternalType(it)))].join(" | ")
-    : "unknown"
+      ? convertExternalType(attribute.type)
+      : typeof attribute.type === "object"
+        ? [...new Set(Object.values(attribute.type.cases).map(it => convertExternalType(it)))].join(" | ")
+        : "unknown"
   return attribute.repeat
     ? Number(attribute["repeat-expr"])
       ? `[${Array.from({length: Number(attribute["repeat-expr"])}, () => typeName).join(", ")}]`
@@ -100,16 +100,16 @@ export function convertNativeType(type: string): string | undefined {
   const jsTypeName = /^([suf]\d+|b[1-9]\d*)([bl]e)?$/.test(type)
     ? "number"
     : /^b1|bool$/.test(type)
-    ? "boolean"
-    : /^strz?$/.test(type)
-    ? "string"
-    : /^struct$/.test(type)
-    ? "object"
-    : /^io|any$/.test(type)
-    ? "any"
-    : /bytes/.test(type)
-    ? "number[]"
-    : undefined
+      ? "boolean"
+      : /^strz?$/.test(type)
+        ? "string"
+        : /^struct$/.test(type)
+          ? "object"
+          : /^io|any$/.test(type)
+            ? "any"
+            : /bytes/.test(type)
+              ? "number[]"
+              : undefined
   return jsTypeName && isArray ? `${jsTypeName}[]` : jsTypeName
 }
 
