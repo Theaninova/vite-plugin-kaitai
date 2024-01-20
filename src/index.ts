@@ -10,7 +10,7 @@ const defaultOptions = {
   generatedTypesFolder: "generated",
 }
 
-export function kaitai(options: Partial<typeof defaultOptions>): Plugin {
+export function kaitai(options: Partial<typeof defaultOptions> = {}): Plugin {
   const kaitaiOptions = {...defaultOptions, ...options}
   let config: ResolvedConfig
   return {
