@@ -29,7 +29,7 @@ export function generateTypeDefinition(spec: KsySchema): string {
       it => `import type ${toTitleCase(basename(it))} from "${basename(it) === it ? `./${it}` : it}.ksy"`,
     ),
     toInterface(spec.meta.id, spec, true, `constructor(buffer: ArrayBuffer)`),
-    ...Object.entries(spec.types).map(([name, type]) => toInterface(name, type)),
+    ...Object.entries(spec.types ?? {}).map(([name, type]) => toInterface(name, type)),
     generateEnums(spec.enums),
   ].join("\n")
 }
