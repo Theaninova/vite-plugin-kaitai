@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-kaitai",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Vite plugin for importing Kaitai Struct files directly",
   "main": "./lib/index.js",
   "files": [
