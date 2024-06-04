@@ -86,7 +86,9 @@ export function getAttributeType(attribute: Attribute) {
       ? convertExternalType(attribute.type)
       : typeof attribute.type === "object"
         ? [...new Set(Object.values(attribute.type.cases).map(it => convertExternalType(it)))].join(" | ")
-        : "unknown"
+        : typeof attribute.size === "number" || (attribute.size_eos ?? false)
+          ? "Uint8Array"
+          : "unknown"
   return attribute.repeat
     ? Number(attribute["repeat-expr"])
       ? `[${Array.from({length: Number(attribute["repeat-expr"])}, () => typeName).join(", ")}]`
